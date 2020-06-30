@@ -1,0 +1,203 @@
+body {
+  color: red;
+  background: #ffe600;
+  min-height: 100vh;
+}
+.skin {
+  position: relative;
+}
+@keyframes shake {
+  0% {
+    transform: rotate(0deg);
+  }
+  33% {
+    transform: rotate(10deg);
+  }
+  66% {
+    transform: rotate(-10deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+.triangle:hover {
+  animation: shake 500ms infinite linear;
+}
+.triangle {
+  z-index: 3;
+  margin-top: 145px;
+  position: absolute;
+  width: 0px;
+  height: 0px;
+  border: 10px solid #000;
+  left: 50%;
+  border-color: black transparent transparent transparent;
+  margin-left: -10px;
+}
+.circle {
+  position: absolute;
+  width: 20px;
+  height: 6px;
+  /* border: 1px solid #000; */
+  top: -16px;
+  left: -10px;
+  border-radius: 14px 14px 0 0;
+  background: black;
+}
+.eye {
+  border: 2px solid #000;
+  background: #2e2e2e;
+  width: 64px;
+  height: 64px;
+  position: absolute;
+  left: 50%;
+  margin-left: -32px;
+  top: 100px;
+  border-radius: 50%;
+}
+.eye::before {
+  content: "";
+  display: block;
+  border: 3px solid black;
+  width: 30px;
+  height: 30px;
+  background: white;
+  border-radius: 50%;
+  position: relative;
+  left: 5px;
+  top: 3px;
+}
+.eye.left {
+  transform: translateX(-100px);
+}
+.eye.right {
+  transform: translateX(100px);
+}
+.mouth {
+  /* border: 1px solid #000; */
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  left: 50%;
+  top: 170px;
+  margin-left: -100px;
+}
+.mouth .up {
+  position: relative;
+  top: -20px;
+}
+.mouth .up .lip {
+  z-index: 2;
+  background: #ffe600;
+  border: 5px solid #ffe600;
+  height: 30px;
+  width: 100px;
+  left: 50%;
+  margin-left: -50px;
+  position: absolute;
+  top: 0;
+}
+.mouth .up .lip.left {
+  border-radius: 0 0 0 50px;
+  border-color: transparent transparent black transparent;
+  transform: rotate(-20deg) translateX(-54px);
+}
+.mouth .up .lip::before {
+  content: "";
+  display: block;
+  width: 5px;
+  height: 25px;
+  border: 3px solid #ffe600;
+  background: #ffe600;
+  position: absolute;
+  bottom: 0;
+}
+.mouth .up .lip.left::before {
+  right: -5px;
+}
+/* .mouth .up .lip.middle {
+  z-index: 1;
+  border: 1px solid #000;
+  height: 30px;
+  width: 20px;
+  background: #ffe600;
+  border-radius: 50%;
+  border-color: transparent transparent #fce54d #fce54d;
+  left: 50%;
+  margin-left: -10px;
+  position: absolute;
+} */
+.mouth .up .lip.right {
+  border-radius: 0 0 50px 0;
+  border-color: transparent transparent black transparent;
+  transform: rotate(20deg) translateX(54px);
+}
+.mouth .up .lip.right::before {
+  left: -5px;
+}
+.mouth .down {
+  top: 30px;
+  /* border: 1px solid red; */
+  height: 120px;
+  position: absolute;
+  width: 100%;
+  overflow: hidden;
+}
+.mouth .down .throat {
+  z-index: 1;
+  border: 1px solid #000;
+  width: 100px;
+  position: absolute;
+  height: 1000px;
+  left: 50%;
+  margin-left: -50px;
+  bottom: 0;
+  border-radius: 100px/400px;
+  background: #8c1c1c;
+  overflow: hidden;
+}
+.mouth .down .throat .tongue {
+  position: absolute;
+  background: #ff485f;
+  border: 1px solid #000;
+  width: 100px;
+  height: 200px;
+  bottom: -100px;
+  left: 50%;
+  border-radius: 50px;
+  margin-left: -50px;
+}
+.face {
+  border: 3px solid #000;
+  position: absolute;
+  height: 80px;
+  width: 80px;
+  left: 50%;
+  margin-left: -40px;
+  border-radius: 50%;
+  background: #e8352e;
+  top: 200px;
+}
+.face.left {
+  transform: translateX(-150px);
+}
+.face.right {
+  transform: translateX(150px);
+}
+.face > img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: none;
+  /* border: 1px solid #000; */
+}
+.face.left > img {
+  transform: rotateY(180deg);
+  transform-origin: 0 0;
+}
+.skin:hover > .face > img {
+  display: block;
+}
+
+
+/*# sourceMappingURL=/style.e308ff8e.css.map */
