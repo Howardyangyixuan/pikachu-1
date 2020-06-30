@@ -81,5 +81,5 @@ class Player {
 }
 const player = new Player();
 player.init()
-console.log(player.n)
+// console.log(player.n)
 
