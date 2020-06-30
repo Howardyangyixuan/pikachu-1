@@ -7,7 +7,7 @@ class Player {
     constructor() {
         this.id = undefined;
         this.n = 0;
-        this.time = 2000;
+        this.time = 100;
         this.ui = {
             text: document.querySelector("#text"),
             css: document.querySelector("#css")
@@ -30,7 +30,7 @@ class Player {
         for (let key in this.events) {
             if (this.events.hasOwnProperty(key)) {
                 const value = this.events[key]
-                document.querySelector(key).onclick = this[value]
+                document.querySelector(key).onclick = this[value].bind(this)
             }
         }
     }
@@ -40,6 +40,8 @@ class Player {
             window.clearInterval(this.id);
             return;
         }
+        // console.log('hi')
+        // console.log(this.n)
         this.ui.text.innerText = string.substr(0, this.n);
         this.ui.text.scrollTop = this.ui.text.scrollHeight;
         this.ui.css.innerText = string.substr(0, this.n);
@@ -48,7 +50,8 @@ class Player {
 
     play() {
         window.clearInterval(this.id);
-        this.id = setInterval(this.run, this.time);
+        console.log(this)
+        this.id = setInterval(this.run.bind(this), this.time);
     }
 
     pause() {
@@ -58,20 +61,25 @@ class Player {
     speedAdjust(newTime) {
         window.clearInterval(this.id);
         this.time = newTime
-        this.id = setInterval(this.run, this.time);
+        this.id = setInterval(this.run.bind(this), this.time);
     }
 
     slow() {
-        this.speedAdjust(2000);
+        // console.log(this)
+        this.speedAdjust(200);
     }
 
     normal() {
-        this.speedAdjust(300);
+        // console.log(this)
+        this.speedAdjust(100);
     }
 
     fast() {
+        // console.log(this)
         this.speedAdjust(0);
     }
 }
 const player = new Player();
 player.init()
+console.log(player.n)
+

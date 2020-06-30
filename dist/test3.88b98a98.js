@@ -149,7 +149,7 @@ var Player = /*#__PURE__*/function () {
 
     this.id = undefined;
     this.n = 0;
-    this.time = 2000;
+    this.time = 100;
     this.ui = {
       text: document.querySelector("#text"),
       css: document.querySelector("#css")
@@ -175,7 +175,7 @@ var Player = /*#__PURE__*/function () {
       for (var key in this.events) {
         if (this.events.hasOwnProperty(key)) {
           var value = this.events[key];
-          document.querySelector(key).onclick = this[value];
+          document.querySelector(key).onclick = this[value].bind(this);
         }
       }
     }
@@ -185,7 +185,9 @@ var Player = /*#__PURE__*/function () {
       if (this.n > _css.default.length) {
         window.clearInterval(this.id);
         return;
-      }
+      } // console.log('hi')
+      // console.log(this.n)
+
 
       this.ui.text.innerText = _css.default.substr(0, this.n);
       this.ui.text.scrollTop = this.ui.text.scrollHeight;
@@ -196,7 +198,8 @@ var Player = /*#__PURE__*/function () {
     key: "play",
     value: function play() {
       window.clearInterval(this.id);
-      this.id = setInterval(this.run, this.time);
+      console.log(this);
+      this.id = setInterval(this.run.bind(this), this.time);
     }
   }, {
     key: "pause",
@@ -208,21 +211,24 @@ var Player = /*#__PURE__*/function () {
     value: function speedAdjust(newTime) {
       window.clearInterval(this.id);
       this.time = newTime;
-      this.id = setInterval(this.run, this.time);
+      this.id = setInterval(this.run.bind(this), this.time);
     }
   }, {
     key: "slow",
     value: function slow() {
-      this.speedAdjust(2000);
+      // console.log(this)
+      this.speedAdjust(200);
     }
   }, {
     key: "normal",
     value: function normal() {
-      this.speedAdjust(300);
+      // console.log(this)
+      this.speedAdjust(100);
     }
   }, {
     key: "fast",
     value: function fast() {
+      // console.log(this)
       this.speedAdjust(0);
     }
   }]);
@@ -232,6 +238,7 @@ var Player = /*#__PURE__*/function () {
 
 var player = new Player();
 player.init();
+console.log(player.n);
 },{"./css.js":"css.js"}],"../../../.config/yarn/global/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -260,7 +267,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51264" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65098" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
